@@ -16,4 +16,8 @@ var server = app.listen(3000, function () {
 // We have to pass in socket.io into the server. 
 //So we just set it to server, then pass it in 
 
-socketio(server);
+var io = socketio(server);
+
+io.on('connection', function(socket) {
+	console.log('Client connected:', socket.id);
+});
